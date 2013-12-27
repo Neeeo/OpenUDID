@@ -208,7 +208,17 @@ static int const kOpenUDIDRedundancySlots = 100;
 // Otherwise, it will register the current app and return the OpenUDID
 //
 + (NSString*) value {
-    return [OpenUDID valueWithError:nil];
+    NSString *value = nil;
+    @try {
+        value = [OpenUDID valueWithError:nil];
+    }
+    @catch (NSException *exception) {
+        value = @"NA";
+    }
+    @finally {
+        
+    }
+    return value;
 }
 
 + (NSString*) valueWithError:(NSError **)error {
